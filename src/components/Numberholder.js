@@ -1,33 +1,41 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useEffect, useState } from 'react';
 
 
 const Numberholder = () => {
-function pickanumber(){
-    let myNumb = [1,2,3,4,5,6,7,8,9,10]
-    let mixedResults = myNumb.sort(() => Math.random() - 0.5);
 
-    return mixedResults[0]
+    const [tablenumber, setTablenumber] = useState (null)
+    const [mixed, setMixed] = useState ([]);
+    const [comparenumb, setComparenumb] = useState (null)
+    const [buttvalue, setButtvalue] = useState (null)
+    
+
+    useEffect (() =>{
+        let myNumb = [1,2,3,4,5,6,7,8,9,10]
+        let mixedResults = myNumb.sort(() => Math.random() - 0.5);
+        setTablenumber(mixedResults[0])
+
+    },[])
+
+    useEffect (()=> {
+        if (tablenumber) {
+            
+            let myNumber = [tablenumber*1,tablenumber*2,tablenumber*3,tablenumber*4,tablenumber*5,tablenumber*6,tablenumber*7,tablenumber*8,tablenumber*9,tablenumber*10]
+            setMixed (myNumber.sort(() => Math.random() - 0.5))}
+
+}, [tablenumber])
+
+function testeffect (ev) {
+
+   console.log (`Button ${ev.currentTarget.value} clicked`)
+
+ 
+
 }
-   
-    const tabelnummer = pickanumber()
-    /*const tabelnummer = tablenumb;*/
-    console.log (tabelnummer)
-    
-    let myNumber = [tabelnummer*1,tabelnummer*2,tabelnummer*3,tabelnummer*4,tabelnummer*5,tabelnummer*6,tabelnummer*7,tabelnummer*8,tabelnummer*9,tabelnummer*10]
-    console.log (myNumber)
-    
-    let mixed = myNumber.sort(() => Math.random() - 0.5);
-
-   console.log ("hephephep")
-    
-  
-   console.log (mixed)
-  
-   
 
    
-
+    
     
 
     const testbutton = css`
@@ -45,26 +53,28 @@ function pickanumber(){
     `;
 
 
-console.log (tabelnummer)
+
 
     return ( 
         <div>
 
-        <h1> {tabelnummer}-tabellen </h1> 
+        <h1> {tablenumber}-tabellen </h1> 
+
+        <h2>{mixed[0]} </h2>
 
         
 
         
-<button css={testbutton} >{tabelnummer} x  1</button>
-<button css={testbutton} >{tabelnummer} x  2</button>
-<button css={testbutton} >{tabelnummer} x  3 </button>
-<button css={testbutton} >{tabelnummer} x  4</button>
-<button css={testbutton} >{tabelnummer} x  5</button>
-<button css={testbutton} >{tabelnummer} x  6</button>
-<button css={testbutton} >{tabelnummer} x  7</button>
-<button css={testbutton} >{tabelnummer} x  8</button>
-<button css={testbutton} >{tabelnummer} x  9</button>
-<button css={testbutton} >{tabelnummer} x 10</button>
+<button value={tablenumber *1} css={testbutton} onClick={testeffect}>{tablenumber} x  1</button>
+<button value={tablenumber *2} css={testbutton} onClick={testeffect}>{tablenumber} x  2</button>
+<button value={tablenumber *3} css={testbutton} onClick={testeffect}>{tablenumber} x  3 </button>
+<button value={tablenumber *4} css={testbutton} onClick={testeffect}>{tablenumber} x  4</button>
+<button value={tablenumber *5} css={testbutton} onClick={testeffect}>{tablenumber} x  5</button>
+<button value={tablenumber *6} css={testbutton} onClick={testeffect}>{tablenumber} x  6</button>
+<button value={tablenumber *7} css={testbutton} onClick={testeffect}>{tablenumber} x  7</button>
+<button value={tablenumber *8} css={testbutton} onClick={testeffect}>{tablenumber} x  8</button>
+<button value={tablenumber *9} css={testbutton} onClick={testeffect}>{tablenumber} x  9</button>
+<button value={tablenumber *10}css={testbutton} onClick={testeffect}>{tablenumber} x 10</button>
 </div>
 
      );
