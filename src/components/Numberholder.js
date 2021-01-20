@@ -29,7 +29,7 @@ const Numberholder = () => {
 
 
 
-function testeffect (ev) {
+function clickeffect (ev) {
 
 console.log (`Button ${ev.currentTarget.value} clicked`)
 let answer = ev.currentTarget.value
@@ -53,10 +53,18 @@ function test1 (){
 
 function test2 (){
     setComparenumb ("forkert")
+    setTimeout(() => {  setComparenumb (null); }, 500);
+    
 }
 
 
+const display = css`
+border: black 4px solid;
+width: 100rem;
+height: 18rem;
 
+
+`;
 
    
     
@@ -64,8 +72,7 @@ function test2 (){
 
     const testbutton = css`
     font-size: 1.3rem;
-     margin: 0.5rem;
-     padding: 0.5rem;
+    
      width: 8rem;
      height: 5rem;
      border: 8px solid #3a799d;
@@ -82,25 +89,28 @@ function test2 (){
     return ( 
         <div>
 
+            <section css={display}>
+
         <h1> {tablenumber}-tabellen </h1> 
 
         <h2>{mixed[0]}</h2>
 
         <h2> {comparenumb}</h2>
 
+        </section>
         
 
         
-<button value={tablenumber *1} css={testbutton} onClick={testeffect}>{tablenumber} x  1</button>
-<button value={tablenumber *2} css={testbutton} onClick={testeffect}>{tablenumber} x  2</button>
-<button value={tablenumber *3} css={testbutton} onClick={testeffect}>{tablenumber} x  3 </button>
-<button value={tablenumber *4} css={testbutton} onClick={testeffect}>{tablenumber} x  4</button>
-<button value={tablenumber *5} css={testbutton} onClick={testeffect}>{tablenumber} x  5</button>
-<button value={tablenumber *6} css={testbutton} onClick={testeffect}>{tablenumber} x  6</button>
-<button value={tablenumber *7} css={testbutton} onClick={testeffect}>{tablenumber} x  7</button>
-<button value={tablenumber *8} css={testbutton} onClick={testeffect}>{tablenumber} x  8</button>
-<button value={tablenumber *9} css={testbutton} onClick={testeffect}>{tablenumber} x  9</button>
-<button value={tablenumber *10}css={testbutton} onClick={testeffect}>{tablenumber} x 10</button>
+<button value={tablenumber *1} css={testbutton} onClick={clickeffect}>{tablenumber} x  1</button>
+<button value={tablenumber *2} css={testbutton} onClick={clickeffect}>{tablenumber} x  2</button>
+<button value={tablenumber *3} css={testbutton} onClick={clickeffect}>{tablenumber} x  3 </button>
+<button value={tablenumber *4} css={testbutton} onClick={clickeffect}>{tablenumber} x  4</button>
+<button value={tablenumber *5} css={testbutton} onClick={clickeffect}>{tablenumber} x  5</button>
+<button value={tablenumber *6} css={testbutton} onClick={clickeffect}>{tablenumber} x  6</button>
+<button value={tablenumber *7} css={testbutton} onClick={clickeffect}>{tablenumber} x  7</button>
+<button value={tablenumber *8} css={testbutton} onClick={clickeffect}>{tablenumber} x  8</button>
+<button value={tablenumber *9} css={testbutton} onClick={clickeffect}>{tablenumber} x  9</button>
+<button value={tablenumber *10}css={testbutton} onClick={clickeffect}>{tablenumber} x 10</button>
 </div>
 
      );
