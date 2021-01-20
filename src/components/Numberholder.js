@@ -8,7 +8,8 @@ const Numberholder = () => {
     const [tablenumber, setTablenumber] = useState (null)
     const [mixed, setMixed] = useState ([]);
     const [comparenumb, setComparenumb] = useState (null)
-    const [buttvalue, setButtvalue] = useState (null)
+    const [buttonvalue, setButtonvalue] = useState (null)
+    
     
 
     useEffect (() =>{
@@ -26,13 +27,36 @@ const Numberholder = () => {
 
 }, [tablenumber])
 
+
+
 function testeffect (ev) {
 
-   console.log (`Button ${ev.currentTarget.value} clicked`)
+console.log (`Button ${ev.currentTarget.value} clicked`)
+let answer = ev.currentTarget.value
+console.log (answer)
+console.log (mixed[0])
 
- 
+
+
+/*{(answer == mixed[0]) ? setComparenumb ("rigtigt") : setComparenumb ("forkert")}*/
+
+
+{(answer == mixed[0]) ? test1() : test2()}
+}
+
+function test1 (){
+    setComparenumb ("rigtigt")
+    setMixed([])
+    
 
 }
+
+function test2 (){
+    setComparenumb ("forkert")
+}
+
+
+
 
    
     
@@ -60,7 +84,9 @@ function testeffect (ev) {
 
         <h1> {tablenumber}-tabellen </h1> 
 
-        <h2>{mixed[0]} </h2>
+        <h2>{mixed[0]}</h2>
+
+        <h2> {comparenumb}</h2>
 
         
 
