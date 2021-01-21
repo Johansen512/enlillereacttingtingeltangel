@@ -41,17 +41,18 @@ console.log (mixed[0])
 /*{(answer == mixed[0]) ? setComparenumb ("rigtigt") : setComparenumb ("forkert")}*/
 
 
-{(answer == mixed[0]) ? test1() : test2()}
+{(answer == mixed[0]) ? answer1() : answer2()}
 }
 
-function test1 (){
+function answer1 (){
     setComparenumb ("rigtigt")
-    setMixed([])
+   
+    
     
 
 }
 
-function test2 (){
+function answer2 (){
     setComparenumb ("forkert")
     setTimeout(() => {  setComparenumb (null); }, 500);
     
