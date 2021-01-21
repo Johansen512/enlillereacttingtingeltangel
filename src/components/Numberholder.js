@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react';
 
 const Numberholder = () => {
 
-    const [tablenumber, setTablenumber] = useState (null)
+   const [tablenumber, setTablenumber] = useState (0)
     const [mixed, setMixed] = useState ([]);
     const [comparenumb, setComparenumb] = useState (null)
-    const [buttonvalue, setButtonvalue] = useState (null)
+    const [currenttable, setCurrenttable] = useState (0)
+    
+    
+    
     
     
 
@@ -24,7 +27,7 @@ const Numberholder = () => {
             
             let myNumber = [tablenumber*1,tablenumber*2,tablenumber*3,tablenumber*4,tablenumber*5,tablenumber*6,tablenumber*7,tablenumber*8,tablenumber*9,tablenumber*10]
             setMixed (myNumber.sort(() => Math.random() - 0.5))}
-
+           
 }, [tablenumber])
 
 
@@ -32,22 +35,35 @@ const Numberholder = () => {
 function clickeffect (ev) {
 
 console.log (`Button ${ev.currentTarget.value} clicked`)
-let answer = ev.currentTarget.value
+let answer = parseInt(ev.currentTarget.value)
+
 console.log (answer)
-console.log (mixed[0])
+console.log (mixed)
 
 
+answer === mixed[currenttable] ? answer1() : answer2()
+}
 
-/*{(answer == mixed[0]) ? setComparenumb ("rigtigt") : setComparenumb ("forkert")}*/
+function resetTable (){
 
 
-{(answer == mixed[0]) ? answer1() : answer2()}
+    
 }
 
 function answer1 (){
-    setComparenumb ("rigtigt")
-   
+    let addOne = currenttable+1
+    setComparenumb ("Rigtigt")
     
+    setTimeout(() => {  
+        setComparenumb (null); 
+        setCurrenttable (addOne)
+    
+         }, 1000)  ;
+
+        
+    addOne > 9 && setTimeout(() => {  setComparenumb ("Rigtigt ... vælg en ny tabel")}, 1000);
+   
+        
     
 
 }
@@ -89,12 +105,16 @@ height: 18rem;
 
     return ( 
         <div>
-
+ <button css={testbutton} >VÆLG EN NY TABEL </button>
             <section css={display}>
+
+               
 
         <h1> {tablenumber}-tabellen </h1> 
 
-        <h2>{mixed[0]}</h2>
+        <h3>{mixed[currenttable]}</h3>
+
+        {/*<div>{mixed.map((mix, index) =>( <h2 key={index}>{mix}</h2>))}</div>*/}
 
         <h2> {comparenumb}</h2>
 
@@ -113,6 +133,7 @@ height: 18rem;
 <button value={tablenumber *9} css={testbutton} onClick={clickeffect}>{tablenumber} x  9</button>
 <button value={tablenumber *10}css={testbutton} onClick={clickeffect}>{tablenumber} x 10</button>
 </div>
+
 
      );
 }
