@@ -23,6 +23,7 @@ const Numberholder = () => {
         let myNumb = [1,2,3,4,5,6,7,8,9,10]
         let mixedResults = myNumb.sort(() => Math.random() - 0.5);
         setTablenumber(mixedResults[0])
+        setCurrenttable (0)
         setNewtable(false)
     }
 
@@ -63,7 +64,7 @@ function answer1 (){
          }, 1000)  ;
 
         
-    addOne > 9 && setTimeout(() => {setComparenumb ("Så flot ... vælg en ny tabel")}, 1000);
+    addOne > 9 && setTimeout(() => {setComparenumb ("Så flot ... vælg en ny tabel")}, 800);
     
     console.log (addOne)
    
@@ -183,15 +184,24 @@ outline: 0;
 
 `;
 
+const byline = css`
+ grid-column: 1/10;
+    grid-row: 7/8;
+    padding:1rem;
+    margin:1rem;
+    font-size: 1.3rem;
+
+`;
+
 
 
 
     return ( 
         <div css={container}>
- <button css={testbutton2} onClick={() => (setNewtable(true), setCurrenttable(0))} ><p>VÆLG EN NY TABEL </p></button>
+ <button css={testbutton2} onClick={() => (setNewtable(true) )} ><p>VÆLG EN NY TABEL </p></button>
             <section css={display}>
 
-               
+              
 
         <Zoom><h1> {tablenumber}-tabellen </h1> </Zoom>
 
@@ -216,6 +226,8 @@ outline: 0;
 <button value={tablenumber *9} css={testbutton} onClick={clickeffect}>{tablenumber} x  9</button>
 <button value={tablenumber *10}css={testbutton} onClick={clickeffect}>{tablenumber} x 10</button>
 </div>
+
+<p css={byline}>Vi leger med tabeller ©johansenkoder version 1.0</p>
 </div>
 
      );
