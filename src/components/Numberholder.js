@@ -1,14 +1,15 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 
 const Numberholder = () => {
 
-   const [tablenumber, setTablenumber] = useState (0)
+    const [tablenumber, setTablenumber] = useState (0);
     const [mixed, setMixed] = useState ([]);
-    const [comparenumb, setComparenumb] = useState (null)
-    const [currenttable, setCurrenttable] = useState (0)
+    const [comparenumb, setComparenumb] = useState (null);
+    const [currenttable, setCurrenttable] = useState (0);
+    const [newtable, setNewtable] = useState (true)
     
     
     
@@ -16,11 +17,14 @@ const Numberholder = () => {
     
 
     useEffect (() =>{
+        if (newtable) {
         let myNumb = [1,2,3,4,5,6,7,8,9,10]
         let mixedResults = myNumb.sort(() => Math.random() - 0.5);
         setTablenumber(mixedResults[0])
+        setNewtable(false)
+    }
 
-    },[])
+    },[newtable])
 
     useEffect (()=> {
         if (tablenumber) {
@@ -44,11 +48,7 @@ console.log (mixed)
 answer === mixed[currenttable] ? answer1() : answer2()
 }
 
-function resetTable (){
 
-
-    
-}
 
 function answer1 (){
     let addOne = currenttable+1
@@ -118,7 +118,7 @@ border-radius:30%;
 
     return ( 
         <div>
- <button css={testbutton2} onClick={() => window.location.reload(false)} ><p>VÆLG EN NY TABEL </p></button>
+ <button css={testbutton2} onClick={() => setNewtable(true)} ><p>VÆLG EN NY TABEL </p></button>
             <section css={display}>
 
                
