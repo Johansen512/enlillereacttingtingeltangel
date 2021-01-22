@@ -64,7 +64,7 @@ function answer1 (){
          }, 1000)  ;
 
         
-    addOne > 9 && setTimeout(() => {setComparenumb ("Så flot ... vælg en ny tabel")}, 800);
+    addOne > 9 && setTimeout(() => {setComparenumb ("Så mega-flot ... vælg en ny tabel")}, 1000);
     
     console.log (addOne)
    
