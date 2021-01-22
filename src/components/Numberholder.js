@@ -100,12 +100,25 @@ height: 18rem;
     border-radius:30%;
     `;
 
+const testbutton2 = css`
+font-size: 1rem;
+
+ width: 8rem;
+ height: 5rem;
+ border: 8px solid #3a799d;
+background-color: #4c93bc;
+overflow:hidden;
+padding: 0.5rem;
+margin: 0.5rem;
+border-radius:30%;
+`;
+
 
 
 
     return ( 
         <div>
- <button css={testbutton} >VÆLG EN NY TABEL </button>
+ <button css={testbutton2} onClick={() => window.location.reload(false)} ><p>VÆLG EN NY TABEL </p></button>
             <section css={display}>
 
                
