@@ -23,6 +23,7 @@ const Numberholder = () => {
         let myNumb = [1,2,3,4,5,6,7,8,9,10]
         let mixedResults = myNumb.sort(() => Math.random() - 0.5);
         setTablenumber(mixedResults[0])
+        setComparenumb (null)
         setCurrenttable (0)
         setNewtable(false)
     }
@@ -87,6 +88,8 @@ margin:0;
 `;
 
 const display = css`
+grid-column: 1/6;
+grid-row: 3/4;
 
 width: 100rem;
 height: 30rem;
@@ -164,20 +167,32 @@ font-size: 3.4rem;
     outline: 0;
     `;
 
-const testbutton2 = css`
+    const navcontainer = css` 
+    grid-column: 1/10;
+    grid-row: 1/2;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
 
-display:flex;
-align-items:center;
-justify-content:center;
-grid-column: 2/3;
+    `;
+
+    const navtext = css`
+    grid-column: 3/5;
 grid-row: 1/2;
+    
+    `;
+
+const testbutton2 = css`
+grid-column: 6/8;
+grid-row: 1/2;
+
 font-size: 1rem;
 width: 8rem;
 height: 5rem;
 border: 8px solid #3a799d;
 background-color: #4c93bc;
 padding: 0.5rem;
-margin: 0.5rem;
+margin: 2rem;
 border-radius:30%;
 box-shadow: 0.25rem 0.25rem 0.8rem;
 outline: 0;
@@ -198,7 +213,7 @@ const byline = css`
 
     return ( 
         <div css={container}>
- <button css={testbutton2} onClick={() => (setNewtable(true) )} ><p>VÆLG EN NY TABEL </p></button>
+ <div css={navcontainer}><p css={navtext}>Vælg det regnestykke hvor resultatet bli'r {mixed[currenttable]} </p><button css={testbutton2} onClick={() => (setNewtable(true) )} ><p>VÆLG EN NY TABEL </p></button></div>
             <section css={display}>
 
               
@@ -215,19 +230,19 @@ const byline = css`
         
 
         <div css={testbuttonWrapper}>
-<button value={tablenumber *1} css={testbutton} onClick={clickeffect}>{tablenumber} x  1</button>
-<button value={tablenumber *2} css={testbutton} onClick={clickeffect}>{tablenumber} x  2</button>
-<button value={tablenumber *3} css={testbutton} onClick={clickeffect}>{tablenumber} x  3 </button>
-<button value={tablenumber *4} css={testbutton} onClick={clickeffect}>{tablenumber} x  4</button>
-<button value={tablenumber *5} css={testbutton} onClick={clickeffect}>{tablenumber} x  5</button>
-<button value={tablenumber *6} css={testbutton} onClick={clickeffect}>{tablenumber} x  6</button>
-<button value={tablenumber *7} css={testbutton} onClick={clickeffect}>{tablenumber} x  7</button>
-<button value={tablenumber *8} css={testbutton} onClick={clickeffect}>{tablenumber} x  8</button>
-<button value={tablenumber *9} css={testbutton} onClick={clickeffect}>{tablenumber} x  9</button>
-<button value={tablenumber *10}css={testbutton} onClick={clickeffect}>{tablenumber} x 10</button>
+<button value={tablenumber *1} css={testbutton} onClick={clickeffect}>1 x {tablenumber}</button>
+<button value={tablenumber *2} css={testbutton} onClick={clickeffect}>2 x {tablenumber}</button>
+<button value={tablenumber *3} css={testbutton} onClick={clickeffect}>3 x {tablenumber} </button>
+<button value={tablenumber *4} css={testbutton} onClick={clickeffect}>4 x {tablenumber}</button>
+<button value={tablenumber *5} css={testbutton} onClick={clickeffect}>5 x {tablenumber}</button>
+<button value={tablenumber *6} css={testbutton} onClick={clickeffect}>6 x {tablenumber}</button>
+<button value={tablenumber *7} css={testbutton} onClick={clickeffect}>7 x {tablenumber}</button>
+<button value={tablenumber *8} css={testbutton} onClick={clickeffect}>8 x {tablenumber}</button>
+<button value={tablenumber *9} css={testbutton} onClick={clickeffect}>9 x {tablenumber}</button>
+<button value={tablenumber *10}css={testbutton} onClick={clickeffect}>10 x {tablenumber}</button>
 </div>
 
-<p css={byline}>Vi leger med tabeller ©johansenkoder version 1.0</p>
+<p css={byline}>Vi leger med tabeller ©johansenkoder version 1.0.2</p>
 </div>
 
      );
